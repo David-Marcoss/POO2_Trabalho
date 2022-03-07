@@ -1,4 +1,5 @@
-from classes import *
+from classes_conta import *
+from class_cliente import *
 
 cliente1 = cliente("123.456.321-22","joao","carlos")
 cliente2 = cliente("113.756.821-92","Maria","Antonia")
