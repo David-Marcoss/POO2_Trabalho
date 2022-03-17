@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>748</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>540</width>
+    <height>680</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>748</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="minimumSize">
+       <size>
+        <width>540</width>
+        <height>650</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>1024</width>
+        <height>748</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(4, 14, 66);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>160</y>
+         <width>371</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>My Bank</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>10</y>
+         <width>171</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>20</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../imagens/icon_banco.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>290</y>
+         <width>181</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border-radius: 7px;
+background-color:rgba(255, 253, 253, 38);
+border: 2px solid rgba(3, 20, 52, 150);
+color: rgb(255, 255, 255);
+
+}
+
+QPushButton:hover{
+
+border: 3px solid rgba(9, 74, 140, 248);
+font-size: 18px;
+font-weight: bold;
+
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Ver Extrato</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>290</y>
+         <width>181</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border-radius: 7px;
+background-color:rgba(255, 253, 253, 38);
+border: 2px solid rgba(3, 20, 52, 150);
+color: rgb(255, 255, 255);
+
+}
+
+QPushButton:hover{
+
+border: 3px solid rgba(9, 74, 140, 248);
+font-size: 18px;
+font-weight: bold;
+
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Sacar</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>450</y>
+         <width>181</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border-radius: 7px;
+background-color:rgba(255, 253, 253, 38);
+border: 2px solid rgba(3, 20, 52, 150);
+color: rgb(255, 255, 255);
+
+}
+
+QPushButton:hover{
+
+border: 3px solid rgba(9, 74, 140, 248);
+font-size: 18px;
+font-weight: bold;
+
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Depositar</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_5">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>450</y>
+         <width>181</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border-radius: 7px;
+background-color:rgba(255, 253, 253, 38);
+border: 2px solid rgba(3, 20, 52, 150);
+color: rgb(255, 255, 255);
+
+}
+
+QPushButton:hover{
+
+border: 3px solid rgba(9, 74, 140, 248);
+font-size: 18px;
+font-weight: bold;
+
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Transferir</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_6">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>450</y>
+         <width>221</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border-radius: 7px;
+background-color:rgba(255, 253, 253, 38);
+border: 2px solid rgba(3, 20, 52, 150);
+color: rgb(255, 255, 255);
+
+}
+
+QPushButton:hover{
+
+border: 3px solid rgba(9, 74, 140, 248);
+font-size: 18px;
+font-weight: bold;
+
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Historico de Transações</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_7">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>290</y>
+         <width>181</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+border-radius: 7px;
+background-color:rgba(255, 253, 253, 38);
+border: 2px solid rgba(3, 20, 52, 150);
+color: rgb(255, 255, 255);
+
+}
+
+QPushButton:hover{
+
+border: 3px solid rgba(9, 74, 140, 248);
+font-size: 18px;
+font-weight: bold;
+
+}
+
+</string>
+       </property>
+       <property name="text">
+        <string>Minha Conta</string>
+       </property>
+      </widget>
+      <zorder>label_2</zorder>
+      <zorder>label</zorder>
+      <zorder>pushButton</zorder>
+      <zorder>pushButton_3</zorder>
+      <zorder>pushButton_4</zorder>
+      <zorder>pushButton_5</zorder>
+      <zorder>pushButton_6</zorder>
+      <zorder>pushButton_7</zorder>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
