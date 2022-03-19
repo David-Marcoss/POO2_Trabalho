@@ -4,24 +4,25 @@ from class_historico import *
 
 class conta:
 
-    __slots__ = ['_numero','_cliente','_saldo','_limite','historico']
+    __slots__ = ['_id_conta', '_cliente', '_saldo', '_limite', '_historico','_senha']
 
-    def __init__(self,numero,cliente,saldo,limite=1000):
-        self._numero = numero
+    def __init__(self, id_conta, cliente, saldo,senha,limite=1000):
+        self._id_conta = id_conta
         self._cliente = cliente
         self._saldo = saldo
         self._limite = limite
-        self.historico = historico()
+        self._senha = senha
+        self._historico = historico()
 
     def extrato(self):
-        print(F"Seu saldo e de: R$ {self._saldo:.2f}")
+        print(f"Seu saldo e de: R$ {self._saldo:.2f}")
 
     def sacar(self,valor):
         if(valor > self._saldo or valor <= 0):
             return False
         else:
             self._saldo-= valor
-            self.historico.salvar_transacao(f"saque feito no valor de R$ {valor}")
+            self._historico.salvar_transacao(f"saque feito no valor de R$ {valor}")
 
             return True
     def depositar(self,valor):
@@ -30,7 +31,7 @@ class conta:
             return False
         else:
             self._saldo += valor
-            self.historico.salvar_transacao(f"Deposito feito no valor de R$ {valor}")
+            self._historico.salvar_transacao(f"Deposito feito no valor de R$ {valor}")
             return True
 
     def transfere(self,valor,destino):
@@ -39,17 +40,17 @@ class conta:
             return False
         else:
             self._saldo -= valor
-            destino.depositar(valor)
-            self.historico.salvar_transacao(f"Transferencia feito no valor de R$ {valor} para a conta {destino.numero}")
+            destino.botao_depositar(valor)
+            self._historico.salvar_transacao(f"Transferencia feito no valor de R$ {valor} para a conta {destino.id_conta}")
 
             return True
 
     @property
-    def numero(self):
-        return self._numero
-    @numero.setter
-    def numero(self,numero):
-        self._numero = numero
+    def id_conta(self):
+        return self._id_conta
+    @id_conta.setter
+    def id_conta(self,numero):
+        self._id_conta = numero
 
     @property
     def cliente(self):
@@ -66,6 +67,18 @@ class conta:
     @limite.setter
     def limite(self, limite):
         self._limite = limite
+
+    @property
+    def senha(self):
+        return self._senha
+
+    @senha.setter
+    def senha(self, senha):
+        self._senha = senha
+
+    @property
+    def saldo(self):
+        return self._saldo
 
 
 

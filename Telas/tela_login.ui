@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>867</width>
+    <width>900</width>
     <height>768</height>
    </rect>
   </property>
@@ -48,15 +48,14 @@ color: rgb(255, 255, 255);</string>
       <widget class="QFrame" name="frame_2">
        <property name="geometry">
         <rect>
-         <x>230</x>
-         <y>200</y>
+         <x>270</x>
+         <y>190</y>
          <width>371</width>
          <height>421</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgba(1, 0, 0, 99);
-marggin: auto;</string>
+        <string notr="true">background-color: rgba(1, 0, 0, 99);</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -225,8 +224,8 @@ QPushButton:hover{
       <widget class="QLabel" name="label">
        <property name="geometry">
         <rect>
-         <x>330</x>
-         <y>90</y>
+         <x>370</x>
+         <y>80</y>
          <width>151</width>
          <height>131</height>
         </rect>

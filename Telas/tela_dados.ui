@@ -49,8 +49,7 @@ color: rgb(255, 255, 255);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:rgba(255, 253, 253, 38);
-marggin: auto;</string>
+        <string notr="true">background-color:rgba(255, 253, 253, 38);</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -81,6 +80,9 @@ color: rgb(0, 0, 0);</string>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
         <property name="placeholderText">
          <string/>
         </property>
@@ -110,6 +112,9 @@ color: rgb(0, 0, 0);</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
         <property name="placeholderText">
          <string/>
@@ -142,6 +147,9 @@ color: rgb(0, 0, 0);
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
         <property name="placeholderText">
          <string/>
         </property>
@@ -172,6 +180,9 @@ color: rgb(0, 0, 0);</string>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
         <property name="placeholderText">
          <string/>
         </property>
@@ -200,6 +211,9 @@ color: rgb(0, 0, 0);
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
         <property name="placeholderText">
          <string/>
         </property>
@@ -227,6 +241,9 @@ color: rgb(0, 0, 0);</string>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
         <property name="placeholderText">
          <string/>
         </property>
@@ -250,7 +267,7 @@ color: rgb(0, 0, 0);</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(32, 74, 135);
-border-raduis: 3px;</string>
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Nome</string>
@@ -278,7 +295,7 @@ border-raduis: 3px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(32, 74, 135);
-border-raduis: 3px;</string>
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Sobrenome</string>
@@ -306,7 +323,7 @@ border-raduis: 3px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(32, 74, 135);
-border-raduis: 3px;</string>
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Cpf</string>
@@ -334,7 +351,7 @@ border-raduis: 3px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(32, 74, 135);
-border-raduis: 3px;</string>
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Numero da conta</string>
@@ -362,7 +379,7 @@ border-raduis: 3px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(32, 74, 135);
-border-raduis: 3px;</string>
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Saldo</string>
@@ -390,7 +407,7 @@ border-raduis: 3px;</string>
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(32, 74, 135);
-border-raduis: 3px;</string>
+border-radius: 3px;</string>
         </property>
         <property name="text">
          <string>Limite</string>
@@ -444,7 +461,6 @@ border: 2px rgb(2, 19, 44);
 
 QPushButton:hover{
 	border: 5px solid rgb(2, 19, 44);
-	font-weigth: bold;
 
 }</string>
         </property>

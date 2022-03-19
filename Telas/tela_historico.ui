@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>849</width>
+    <width>900</width>
     <height>748</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>540</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>748</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -56,8 +68,7 @@ color: rgb(255, 255, 255);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgba(1, 0, 0, 99);
-marggin: auto;</string>
+        <string notr="true">background-color: rgba(1, 0, 0, 99);</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -130,6 +141,9 @@ QPushButton:hover{
 background-color: rgba(255, 255, 255, 198);
 border: 1px solid rgba(3, 20, 52, 150);
 color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
         <property name="html">
          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
