@@ -161,10 +161,11 @@ class main(QMainWindow,main_telas):
             QMessageBox.information(None, 'msg', 'Preencha todos os campos para criar conta !!')
 
     def botao_logar(self):
-        user = int(self.tela_login.lineEdit.text())
+        user = self.tela_login.lineEdit.text()
         senha = self.tela_login.lineEdit_2.text()
 
         if (user != '' and senha != ''):
+            user = int(user)
 
             conta = self.Banco.buscar_conta(user)
             self.tela_login.lineEdit.setText('')
