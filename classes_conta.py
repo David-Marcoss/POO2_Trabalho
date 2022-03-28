@@ -80,6 +80,10 @@ class conta:
     def saldo(self):
         return self._saldo
 
+    @property
+    def historico(self):
+        return self._historico
+
 
 
 

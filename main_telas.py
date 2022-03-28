@@ -68,15 +68,15 @@ class main_telas(QtWidgets.QWidget):
         self.tela_historico = tela_historico()
         self.tela_historico.setupUi(self.QtStack8)
 
-        self.QtStack.addWidget(self.QtStack0)
-        self.QtStack.addWidget(self.QtStack1)
-        self.QtStack.addWidget(self.QtStack2)
-        self.QtStack.addWidget(self.QtStack3)
-        self.QtStack.addWidget(self.QtStack4)
-        self.QtStack.addWidget(self.QtStack5)
-        self.QtStack.addWidget(self.QtStack6)
-        self.QtStack.addWidget(self.QtStack7)
-        self.QtStack.addWidget(self.QtStack8)
+        self.QtStack.addWidget(self.QtStack0)  #tela login
+        self.QtStack.addWidget(self.QtStack1)  #tela cadatro
+        self.QtStack.addWidget(self.QtStack2)  #tela menu
+        self.QtStack.addWidget(self.QtStack3)  #tela dados
+        self.QtStack.addWidget(self.QtStack4)  #tela extrato
+        self.QtStack.addWidget(self.QtStack5)  #tela saque
+        self.QtStack.addWidget(self.QtStack6)  #tela deposito
+        self.QtStack.addWidget(self.QtStack7)  #tela trasnferencia
+        self.QtStack.addWidget(self.QtStack8)  #tela historico
 
 
 class main(QMainWindow,main_telas):
@@ -174,7 +174,7 @@ class main(QMainWindow,main_telas):
             if (conta != None):
 
                 if (senha == conta.senha):
-                    self.conta_logada = conta # recebe a conta logada para que possa fazer as operações apos entrar no sistema
+                    self.conta_logada = conta  # recebe a conta logada para que possa fazer as operações apos entrar no sistema
                     self.abrir_telaMenu()
 
                 else:
@@ -303,6 +303,8 @@ class main(QMainWindow,main_telas):
         self.QtStack.setCurrentIndex(7)
 
     def abrir_telaHistorico(self):
+        self.tela_historico.textEdit.setText(self.conta_logada.historico.imprimir_historico())
+
         self.QtStack.setCurrentIndex(8)
 
     def voltarLogin(self):

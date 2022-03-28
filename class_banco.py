@@ -6,6 +6,7 @@ class banco:
 
     def criar_conta(self,conta):
         if self.buscar_conta(conta.id_conta) == None:
+
             self._contas[conta.id_conta] = conta
             return True
         else:

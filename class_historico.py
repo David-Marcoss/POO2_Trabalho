@@ -9,6 +9,10 @@ class historico:
         self.transacoes.append(transacao)
 
     def imprimir_historico(self):
-        print(f"\nTransações feitas apartir da data: {self.data}\n")
+        historicos = ('----'*20) + '\n'
+        historicos += f"\nTransações feitas apartir da data: {self.data}\n"
+        historicos += ('----' * 20) + '\n'
         for i in self.transacoes:
-            print(f"- {i}")
+            historicos += i + '\n'+ ('----'*20) + '\n'
+
+        return historicos
