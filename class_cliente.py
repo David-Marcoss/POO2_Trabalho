@@ -1,14 +1,17 @@
 class cliente:
 
-    __slots__ = ['_cpf','_nome','_sobrenome']
+    __slots__ = ['_cliente_id','_cpf','_nome','_sobrenome','_data_nascimento']
 
-    def __init__(self,cpf,nome,sobrenome):
+    def __init__(self,id,cpf,nome,sobrenome,data):
+
+        self._cliente_id = id
         self._cpf = cpf
         self._nome = nome
         self._sobrenome = sobrenome
+        self._data_nascimento = data
 
     def dados(self):
-        print(f"\nnome: {self.nome}\nsobrenome: {self.sobrenome}\ncpf: {self.cpf}")
+        print(f"\nid: {self.cliente_id}\nnome: {self.nome}\nsobrenome: {self.sobrenome}\ncpf: {self.cpf}\nnascimento:{self.data_nascimento}")
 
     @property
     def cpf(self):
@@ -33,4 +36,12 @@ class cliente:
     @sobrenome.setter
     def sobrenome(self, sobrenome):
         self._sobrenome = sobrenome
+
+    @property
+    def data_nascimento(self):
+        return self._data_nascimento
+
+    @property
+    def cliente_id(self):
+        return self._cliente_id
 

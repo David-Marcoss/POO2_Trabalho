@@ -1,4 +1,4 @@
-
+import mysql.connector as mysql
 
 class banco:
     def __init__(self):
@@ -30,3 +30,5 @@ class banco:
             return False
 
 
+if __name__ == '__main__':
+    pass
