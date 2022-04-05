@@ -28,29 +28,13 @@ class tela_historico(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.label_2 = QtWidgets.QLabel(self.frame)
-        self.label_2.setGeometry(QtCore.QRect(310, -10, 201, 131))
+        self.label_2.setGeometry(QtCore.QRect(320, -10, 201, 131))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("../imagens/icon_extrato2.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("imagens/icon_extrato2.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
-        self.frame_2 = QtWidgets.QFrame(self.frame)
-        self.frame_2.setGeometry(QtCore.QRect(180, 110, 481, 601))
-        self.frame_2.setStyleSheet("background-color: rgba(1, 0, 0, 99);")
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.label = QtWidgets.QLabel(self.frame_2)
-        self.label.setGeometry(QtCore.QRect(0, 20, 481, 20))
-        font = QtGui.QFont()
-        font.setFamily("Sans Serif")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label.setFont(font)
-        self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setObjectName("label")
-        self.pushButton_2 = QtWidgets.QPushButton(self.frame_2)
-        self.pushButton_2.setGeometry(QtCore.QRect(180, 550, 141, 41))
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_2.setGeometry(QtCore.QRect(360, 620, 141, 41))
         self.pushButton_2.setStyleSheet("QPushButton{\n"
 "\n"
 "background-color: rgb(52, 101, 164);    \n"
@@ -64,14 +48,27 @@ class tela_historico(object):
 "    border: 2px solid rgb(32, 74, 135);\n"
 "}")
         self.pushButton_2.setObjectName("pushButton_2")
-        self.textEdit = QtWidgets.QTextEdit(self.frame_2)
-        self.textEdit.setGeometry(QtCore.QRect(30, 60, 421, 471))
-        self.textEdit.setStyleSheet("border-radius: 5px;\n"
-"background-color: rgba(255, 255, 255, 198);\n"
-"border: 1px solid rgba(3, 20, 52, 150);\n"
-"color: rgb(0, 0, 0);")
+        self.textEdit = QtWidgets.QTextEdit(self.frame)
+        self.textEdit.setGeometry(QtCore.QRect(190, 160, 471, 431))
+        font = QtGui.QFont()
+        font.setPointSize(17)
+        font.setBold(False)
+        font.setWeight(50)
+        self.textEdit.setFont(font)
+        self.textEdit.setStyleSheet("background-color: rgba(51, 72, 113, 170);\n"
+"color:  rgb(255, 255, 255);\n"
+"border-radius: 5px;")
         self.textEdit.setReadOnly(True)
         self.textEdit.setObjectName("textEdit")
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setGeometry(QtCore.QRect(180, 110, 471, 31))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.frame)
         tela_historico.setCentralWidget(self.centralwidget)
 
@@ -81,13 +78,14 @@ class tela_historico(object):
     def retranslateUi(self, tela_historico):
         _translate = QtCore.QCoreApplication.translate
         tela_historico.setWindowTitle(_translate("tela_historico", "MainWindow"))
-        self.label.setText(_translate("tela_historico", "Historico de Transações"))
         self.pushButton_2.setText(_translate("tela_historico", "Menu"))
         self.textEdit.setHtml(_translate("tela_historico", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:17pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">---------------------------------------------------</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">skqmklsmlq    mlskmqmmqklsml</p></body></html>"))
+        self.label.setText(_translate("tela_historico", "Historico de transações"))
 
 
 if __name__ == "__main__":

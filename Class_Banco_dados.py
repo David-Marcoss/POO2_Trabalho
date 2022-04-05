@@ -157,7 +157,7 @@ class banco:
             id_conta = self.retorna_dado_conta('Id_conta','Cliente_Id_cliente',id_cliente)
             id_conta = id_conta[0][0]
 
-            self.inserir_transacao_historico(id_conta,'Conta criada')
+            self.inserir_transacao_historico(id_conta,'-Conta criada')
 
             return True
         else:
@@ -255,11 +255,11 @@ class banco:
             if conta_logada.sacar(valor) != None:
 
                 self.atualiza_dado_conta(conta_logada.id_conta, 'saldo', conta_logada.saldo)
-                self.inserir_transacao_historico(conta_logada.id_conta,f'Transferencia no valor de: R$ {valor} enviada para conta: {id_conta_destino}')
+                self.inserir_transacao_historico(conta_logada.id_conta,f'   -Transferencia no valor de: R$ {valor} enviada para conta: {id_conta_destino}')
 
                 saldo_destino+= valor
                 self.atualiza_dado_conta(id_conta_destino, 'saldo', saldo_destino)
-                self.inserir_transacao_historico(id_conta_destino,f'Transferencia recebida no valor de: R$ {valor} da conta : {conta_logada.id_conta}')
+                self.inserir_transacao_historico(id_conta_destino,f'    -Transferencia recebida no valor de: R$ {valor} da conta : {conta_logada.id_conta}')
                 return True
 
             else:
@@ -288,6 +288,7 @@ class banco:
 if __name__ == '__main__':
     banco = banco()
     banco.conecta_banco()
+
 
     #c = banco.retorna_cliente('88697949354')
 

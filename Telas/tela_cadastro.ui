@@ -145,36 +145,6 @@ color: rgb(0, 0, 0);
         <string>Cpf</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_4">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>260</y>
-         <width>761</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 5px;
-background-color: rgba(255, 255, 255, 198);
-border: 1px solid rgba(3, 20, 52, 150);
-color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="maxLength">
-        <number>16</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="placeholderText">
-        <string>Data de Nascimento</string>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="lineEdit_8">
        <property name="geometry">
         <rect>
@@ -410,6 +380,65 @@ color: rgb(0, 0, 0);</string>
        </property>
        <property name="placeholderText">
         <string>Senha da Conta</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEdit">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>255</y>
+         <width>301</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 5px;
+background-color: rgba(255, 255, 255, 198);
+border: 1px solid rgba(3, 20, 52, 150);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="frame">
+        <bool>false</bool>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::UpDownArrows</enum>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+       <property name="timeSpec">
+        <enum>Qt::LocalTime</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>260</y>
+         <width>171</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data de Nascimento</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </widget>

@@ -67,18 +67,6 @@ class tela_cadastro(object):
         self.lineEdit_3.setMaxLength(11)
         self.lineEdit_3.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_3.setObjectName("lineEdit_3")
-        self.lineEdit_4 = QtWidgets.QLineEdit(self.frame)
-        self.lineEdit_4.setGeometry(QtCore.QRect(60, 260, 761, 31))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEdit_4.setFont(font)
-        self.lineEdit_4.setStyleSheet("border-radius: 5px;\n"
-"background-color: rgba(255, 255, 255, 198);\n"
-"border: 1px solid rgba(3, 20, 52, 150);\n"
-"color: rgb(0, 0, 0);")
-        self.lineEdit_4.setMaxLength(16)
-        self.lineEdit_4.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_4.setObjectName("lineEdit_4")
         self.lineEdit_8 = QtWidgets.QLineEdit(self.frame)
         self.lineEdit_8.setGeometry(QtCore.QRect(60, 480, 761, 31))
         font = QtGui.QFont()
@@ -192,6 +180,30 @@ class tela_cadastro(object):
 "color: rgb(0, 0, 0);")
         self.lineEdit_15.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_15.setObjectName("lineEdit_15")
+        self.dateEdit = QtWidgets.QDateEdit(self.frame)
+        self.dateEdit.setGeometry(QtCore.QRect(310, 255, 301, 41))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.dateEdit.setFont(font)
+        self.dateEdit.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.dateEdit.setStyleSheet("border-radius: 5px;\n"
+"background-color: rgba(255, 255, 255, 198);\n"
+"border: 1px solid rgba(3, 20, 52, 150);\n"
+"color: rgb(0, 0, 0);")
+        self.dateEdit.setFrame(False)
+        self.dateEdit.setButtonSymbols(QtWidgets.QAbstractSpinBox.UpDownArrows)
+        self.dateEdit.setCalendarPopup(True)
+        self.dateEdit.setTimeSpec(QtCore.Qt.LocalTime)
+        self.dateEdit.setObjectName("dateEdit")
+        self.label_3 = QtWidgets.QLabel(self.frame)
+        self.label_3.setGeometry(QtCore.QRect(120, 260, 171, 31))
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setObjectName("label_3")
         self.verticalLayout.addWidget(self.frame)
         tela_cadastro.setCentralWidget(self.centralwidget)
 
@@ -204,7 +216,6 @@ class tela_cadastro(object):
         self.lineEdit.setPlaceholderText(_translate("tela_cadastro", "Nome"))
         self.lineEdit_2.setPlaceholderText(_translate("tela_cadastro", "Sobrenome"))
         self.lineEdit_3.setPlaceholderText(_translate("tela_cadastro", "Cpf"))
-        self.lineEdit_4.setPlaceholderText(_translate("tela_cadastro", "Data de Nascimento"))
         self.lineEdit_8.setPlaceholderText(_translate("tela_cadastro", "Valor para deposito inicial"))
         self.lineEdit_6.setPlaceholderText(_translate("tela_cadastro", "Limite da Conta"))
         self.pushButton.setText(_translate("tela_cadastro", "Cadastrar"))
@@ -213,6 +224,7 @@ class tela_cadastro(object):
         self.label_2.setText(_translate("tela_cadastro", "Preencha os dados da conta:"))
         self.lineEdit_7.setPlaceholderText(_translate("tela_cadastro", "Usuario"))
         self.lineEdit_15.setPlaceholderText(_translate("tela_cadastro", "Senha da Conta"))
+        self.label_3.setText(_translate("tela_cadastro", "Data de Nascimento"))
 
 
 if __name__ == "__main__":
@@ -221,5 +233,7 @@ if __name__ == "__main__":
     tela_cadastro = QtWidgets.QMainWindow()
     ui = Ui_tela_cadastro()
     ui.setupUi(tela_cadastro)
+
     tela_cadastro.show()
+
     sys.exit(app.exec_())

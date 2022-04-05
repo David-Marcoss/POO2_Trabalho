@@ -5,15 +5,16 @@ from PyQt5.QtWidgets import QMessageBox, QMainWindow, QApplication
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-from Telas.tela_cadastro import tela_cadastro
-from Telas.tela_dados import tela_dados
-from Telas.tela_deposito import tela_deposito
-from Telas.tela_extrato import tela_extrato
-from Telas.tela_historico import tela_historico
-from Telas.tela_login import tela_login
-from Telas.tela_menu import tela_menu
-from Telas.tela_saque import tela_saque
-from Telas.tela_transferencia import tela_transferencia
+from tela_cadastro import tela_cadastro
+from tela_dados import tela_dados
+from tela_deposito import tela_deposito
+from tela_extrato import tela_extrato
+from tela_historico import tela_historico
+from tela_login import tela_login
+from tela_menu import tela_menu
+from tela_saque import tela_saque
+from tela_transferencia import tela_transferencia
+
 from class_cliente import cliente
 from classes_conta import conta
 
@@ -123,7 +124,7 @@ class main(QMainWindow,main_telas):
         nome = self.tela_cadastro.lineEdit.text()
         sobrenome = self.tela_cadastro.lineEdit_2.text()
         cpf = self.tela_cadastro.lineEdit_3.text()
-        nascimento = self.tela_cadastro.lineEdit_4.text()
+        nascimento = self.tela_cadastro.dateEdit.text()
 
         saldo = self.tela_cadastro.lineEdit_8.text()
         limite= self.tela_cadastro.lineEdit_6.text()
@@ -133,37 +134,47 @@ class main(QMainWindow,main_telas):
 
         if (nome != '' and cpf != '' and sobrenome != '' and nascimento != '' and saldo != '' and limite != '' and senha != '' and user != ''):
 
-            saldo = float(saldo)
-            limite = float(limite)
+            saldo = self.ler_float(saldo)
+            limite = self.ler_float(limite)
+            nascimento = self.trata_data(nascimento)
 
-            aux = self.Banco.inserir_cliente(nome,sobrenome,nascimento,cpf)
+            if saldo == None or saldo < 1:
+                self.tela_cadastro.lineEdit_8.setText('')
+                QMessageBox.information(None, 'msg', 'Valor invalido!! Digite um valor valido para o deposito!!')
 
-            if(aux):
 
-                aux = self.Banco.inserir_conta(cpf,saldo,limite,senha,user)
+            elif limite == None or limite < 1:
+                self.tela_cadastro.lineEdit_6.setText('')
+                QMessageBox.information(None, 'msg', 'Valor invalido!! Digite um valor valido para o limite!!')
 
-                if (aux):
-
-                    QMessageBox.information(None, 'msg', 'Conta cadastrada com Sucesso !!')
-
-                    self.tela_cadastro.lineEdit.setText('')
-                    self.tela_cadastro.lineEdit_2.setText('')
-                    self.tela_cadastro.lineEdit_3.setText('')
-                    self.tela_cadastro.lineEdit_4.setText('')
-                    self.tela_cadastro.lineEdit_8.setText('')
-                    self.tela_cadastro.lineEdit_6.setText('')
-                    self.tela_cadastro.lineEdit_7.setText('')
-                    self.tela_cadastro.lineEdit_15.setText('')
-
-                    self.voltarLogin()
-
-                else:
-                    self.Banco.remover_cliente(cpf)
-                    QMessageBox.information(None, 'msg', 'Nao foi possivel criar conta!! Numero da conta invalido')
-                    self.abrir_telaCadastro()
             else:
-                QMessageBox.information(None, 'msg', 'Nao foi possivel criar conta!! Cpf já cadastrado no sistema')
-                self.abrir_telaCadastro()
+                aux = self.Banco.inserir_cliente(nome,sobrenome,nascimento,cpf)
+
+                if(aux):
+
+                    aux = self.Banco.inserir_conta(cpf,saldo,limite,senha,user)
+
+                    if (aux):
+
+                        QMessageBox.information(None, 'msg', 'Conta cadastrada com Sucesso !!')
+
+                        self.tela_cadastro.lineEdit.setText('')
+                        self.tela_cadastro.lineEdit_2.setText('')
+                        self.tela_cadastro.lineEdit_3.setText('')
+                        self.tela_cadastro.lineEdit_8.setText('')
+                        self.tela_cadastro.lineEdit_6.setText('')
+                        self.tela_cadastro.lineEdit_7.setText('')
+                        self.tela_cadastro.lineEdit_15.setText('')
+
+                        self.voltarLogin()
+
+                    else:
+                        self.Banco.remover_cliente(cpf)
+                        QMessageBox.information(None, 'msg', 'Nao foi possivel criar conta!! Numero da conta invalido')
+                        self.abrir_telaCadastro()
+                else:
+                    QMessageBox.information(None, 'msg', 'Nao foi possivel criar conta!! Cpf já cadastrado no sistema')
+                    self.abrir_telaCadastro()
 
 
         else:
@@ -200,21 +211,26 @@ class main(QMainWindow,main_telas):
         valor = self.tela_saque.lineEdit.text()
 
         if(valor !=''):
-            valor = float(valor)
+            valor = self.ler_float(valor)
 
-            transacao = self.conta_logada.sacar(valor)
-
-            if (transacao != None):
-                QMessageBox.information(None, 'msg', 'Saque feito com sucesso !!')
-
-                self.Banco.atualiza_dado_conta(self.conta_logada.id_conta, 'saldo', self.conta_logada.saldo)
-                self.Banco.inserir_transacao_historico(self.conta_logada.id_conta,transacao)
-
+            if valor == None or valor < 1:
                 self.tela_saque.lineEdit.setText('')
-                self.abrir_telaMenu()
+                QMessageBox.information(None, 'msg', 'Valor invalido!! Digite um valor valido para o deposito!!')
+
             else:
-                QMessageBox.information(None, 'msg', 'Nao foi possivel concluir Saque !! ')
-                self.tela_saque.lineEdit.setText('')
+                transacao = self.conta_logada.sacar(valor)
+
+                if (transacao != None):
+                    QMessageBox.information(None, 'msg', 'Saque feito com sucesso !!')
+
+                    self.Banco.atualiza_dado_conta(self.conta_logada.id_conta, 'saldo', self.conta_logada.saldo)
+                    self.Banco.inserir_transacao_historico(self.conta_logada.id_conta,transacao)
+
+                    self.tela_saque.lineEdit.setText('')
+                    self.abrir_telaMenu()
+                else:
+                    QMessageBox.information(None, 'msg', 'Nao foi possivel concluir Saque !! ')
+                    self.tela_saque.lineEdit.setText('')
         else:
             QMessageBox.information(None, 'msg', 'Preencha todos os campos para concluir Saque!! ')
 
@@ -223,21 +239,26 @@ class main(QMainWindow,main_telas):
 
         if(valor != ''):
 
-            valor = float(valor)
+            valor = self.ler_float(valor)
 
-            transacao = self.conta_logada.depositar(valor)
-
-            if (transacao != None):
-                QMessageBox.information(None, 'msg', 'Deposito feito com sucesso !!')
-
-                self.Banco.atualiza_dado_conta(self.conta_logada.id_conta, 'saldo', self.conta_logada.saldo)
-                self.Banco.inserir_transacao_historico(self.conta_logada.id_conta, transacao)
-
+            if valor == None or valor < 1:
                 self.tela_deposito.lineEdit.setText('')
-                self.abrir_telaMenu()
+                QMessageBox.information(None, 'msg', 'Valor invalido!! Digite um valor valido para o deposito!!')
+
             else:
-                QMessageBox.information(None, 'msg', 'Nao foi possivel concluir deposito Deposito !! ')
-                self.tela_deposito.lineEdit.setText('')
+                transacao = self.conta_logada.depositar(valor)
+
+                if (transacao != None):
+                    QMessageBox.information(None, 'msg', 'Deposito feito com sucesso !!')
+
+                    self.Banco.atualiza_dado_conta(self.conta_logada.id_conta, 'saldo', self.conta_logada.saldo)
+                    self.Banco.inserir_transacao_historico(self.conta_logada.id_conta, transacao)
+
+                    self.tela_deposito.lineEdit.setText('')
+                    self.abrir_telaMenu()
+                else:
+                    QMessageBox.information(None, 'msg', 'Nao foi possivel concluir deposito Deposito !! ')
+                    self.tela_deposito.lineEdit.setText('')
         else:
             QMessageBox.information(None, 'msg', 'Preencha todos os campos para concluir Deposito!! ')
 
@@ -247,21 +268,30 @@ class main(QMainWindow,main_telas):
         id_destino = self.tela_transferencia.lineEdit_5.text() #recebe o id da conta de destino
 
         if(valor != '' and id_destino != ''):
-            valor = float(valor)
-            id_destino = int(id_destino)
+            valor = self.ler_float(valor)
+            id_destino = self.ler_int(id_destino)
 
-            conta_destino = self.Banco.transferencia(self.conta_logada,id_destino,valor)  #recebe a conta de destino se existir
-
-            if (conta_destino):
-                QMessageBox.information(None, 'msg', 'Transferencia concluida com sucesso !! ')
+            if valor == None or valor < 1:
                 self.tela_transferencia.lineEdit.setText('')
+                QMessageBox.information(None, 'msg', 'Valor invalido!! Digite um valor valido para o Transferencia!!')
+
+            elif id_destino == None or id_destino < 1:
                 self.tela_transferencia.lineEdit_5.setText('')
-                self.abrir_telaMenu()
+                QMessageBox.information(None, 'msg', 'Valor invalido!! Digite um valor valido para a conta de destino!!')
 
             else:
-                QMessageBox.information(None, 'msg', 'Nao foi possivel concluir transferencia!! valores de entrada invalidos')
-                self.tela_transferencia.lineEdit.setText('')
-                self.tela_transferencia.lineEdit_5.setText('')
+                conta_destino = self.Banco.transferencia(self.conta_logada,id_destino,valor)  #recebe a conta de destino se existir
+
+                if (conta_destino):
+                    QMessageBox.information(None, 'msg', 'Transferencia concluida com sucesso !! ')
+                    self.tela_transferencia.lineEdit.setText('')
+                    self.tela_transferencia.lineEdit_5.setText('')
+                    self.abrir_telaMenu()
+
+                else:
+                    QMessageBox.information(None, 'msg', 'Nao foi possivel concluir transferencia!! valores de entrada invalidos')
+                    self.tela_transferencia.lineEdit.setText('')
+                    self.tela_transferencia.lineEdit_5.setText('')
         else:
             QMessageBox.information(None, 'msg','Preencha todos os campos para concluir transferencia!! ')
 
@@ -272,7 +302,6 @@ class main(QMainWindow,main_telas):
         self.tela_cadastro.lineEdit.setText('')
         self.tela_cadastro.lineEdit_2.setText('')
         self.tela_cadastro.lineEdit_3.setText('')
-        self.tela_cadastro.lineEdit_4.setText('')
         self.tela_cadastro.lineEdit_8.setText('')
         self.tela_cadastro.lineEdit_6.setText('')
         self.tela_cadastro.lineEdit_7.setText('')
@@ -330,8 +359,32 @@ class main(QMainWindow,main_telas):
         self.Banco.desconectar_banco()
         self.QtStack.setCurrentIndex(0)
 
+    def ler_int(self,valor):
+        try:
+            valor = int(valor)
+        except ValueError:
+            return None
+
+        else:
+            return valor
+
+    def ler_float(self,valor):
+        try:
+            valor = float(valor)
+        except ValueError:
+            return None
+
+        else:
+            return valor
+
+    def trata_data(self,data):
+        data = data.split('/')
+        data = f"{data[2]}/{data[1]}/{data[0]}"
+
+        return data
 
 if __name__ == '__main__':
     app= QApplication(sys.argv)
     show_main = main()
     sys.exit(app.exec_())
+

@@ -12,14 +12,14 @@ class conta:
         self._user_login = user
 
     def extrato(self):
-        print(f"Seu saldo e de: R$ {self._saldo:.2f}")
+        print(f"    -Seu saldo e de: R$ {self._saldo:.2f}")
 
     def sacar(self, valor):
         if valor > self._saldo or valor <= 0:
             return None
         else:
             self._saldo -= valor
-            transacao = f"saque feito no valor de R$ {valor}"
+            transacao = f"  -saque feito no valor de R$ {valor}"
 
             return transacao
 
@@ -29,7 +29,7 @@ class conta:
             return None
         else:
             self._saldo += valor
-            transacao = f"Deposito feito no valor de R$ {valor}"
+            transacao = f"  -Deposito feito no valor de R$ {valor}"
 
             return transacao
 

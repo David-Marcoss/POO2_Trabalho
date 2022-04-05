@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'tela_transferencia.ui'
+# Form implementation generated from reading ui file 'tela_saque.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -11,13 +11,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class tela_transferencia(object):
-    def setupUi(self, tela_transferencia):
-        tela_transferencia.setObjectName("tela_transferencia")
-        tela_transferencia.resize(900, 748)
-        tela_transferencia.setMinimumSize(QtCore.QSize(540, 650))
-        tela_transferencia.setMaximumSize(QtCore.QSize(1024, 748))
-        self.centralwidget = QtWidgets.QWidget(tela_transferencia)
+class tela_saque(object):
+    def setupUi(self, tela_saque):
+        tela_saque.setObjectName("tela_saque")
+        tela_saque.resize(900, 748)
+        tela_saque.setMinimumSize(QtCore.QSize(540, 650))
+        tela_saque.setMaximumSize(QtCore.QSize(1024, 748))
+        self.centralwidget = QtWidgets.QWidget(tela_saque)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -27,14 +27,20 @@ class tela_transferencia(object):
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
+        self.label_2 = QtWidgets.QLabel(self.frame)
+        self.label_2.setGeometry(QtCore.QRect(380, 50, 141, 111))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap("imagens/icons8-fluxo-de-caixa-64.png"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setObjectName("label_2")
         self.frame_2 = QtWidgets.QFrame(self.frame)
-        self.frame_2.setGeometry(QtCore.QRect(200, 140, 481, 391))
+        self.frame_2.setGeometry(QtCore.QRect(220, 170, 481, 301))
         self.frame_2.setStyleSheet("background-color: rgba(1, 0, 0, 99);")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
         self.lineEdit = QtWidgets.QLineEdit(self.frame_2)
-        self.lineEdit.setGeometry(QtCore.QRect(110, 150, 281, 31))
+        self.lineEdit.setGeometry(QtCore.QRect(120, 150, 251, 31))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.lineEdit.setFont(font)
@@ -56,7 +62,7 @@ class tela_transferencia(object):
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.frame_2)
-        self.pushButton.setGeometry(QtCore.QRect(60, 320, 131, 31))
+        self.pushButton.setGeometry(QtCore.QRect(60, 220, 131, 31))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(True)
@@ -78,7 +84,7 @@ class tela_transferencia(object):
 "")
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(self.frame_2)
-        self.pushButton_2.setGeometry(QtCore.QRect(290, 320, 131, 31))
+        self.pushButton_2.setGeometry(QtCore.QRect(290, 220, 131, 31))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(True)
@@ -121,20 +127,8 @@ class tela_transferencia(object):
         self.lineEdit_2.setReadOnly(True)
         self.lineEdit_2.setPlaceholderText("")
         self.lineEdit_2.setObjectName("lineEdit_2")
-        self.lineEdit_5 = QtWidgets.QLineEdit(self.frame_2)
-        self.lineEdit_5.setGeometry(QtCore.QRect(140, 220, 331, 31))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.lineEdit_5.setFont(font)
-        self.lineEdit_5.setStyleSheet("border-radius: 5px;\n"
-"background-color: rgba(255, 255, 255, 198);\n"
-"border: 1px solid rgba(3, 20, 52, 150);\n"
-"color: rgb(0, 0, 0);")
-        self.lineEdit_5.setText("")
-        self.lineEdit_5.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_5.setObjectName("lineEdit_5")
         self.label_4 = QtWidgets.QLabel(self.frame_2)
-        self.label_4.setGeometry(QtCore.QRect(10, 150, 81, 31))
+        self.label_4.setGeometry(QtCore.QRect(20, 150, 81, 31))
         font = QtGui.QFont()
         font.setPointSize(13)
         font.setBold(True)
@@ -142,45 +136,40 @@ class tela_transferencia(object):
         self.label_4.setFont(font)
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
-        self.label_5 = QtWidgets.QLabel(self.frame_2)
-        self.label_5.setGeometry(QtCore.QRect(10, 220, 121, 31))
+        self.label_6 = QtWidgets.QLabel(self.frame)
+        self.label_6.setGeometry(QtCore.QRect(280, 10, 371, 41))
         font = QtGui.QFont()
-        font.setPointSize(13)
+        font.setFamily("Sawasdee")
+        font.setPointSize(24)
         font.setBold(True)
         font.setWeight(75)
-        self.label_5.setFont(font)
-        self.label_5.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_5.setObjectName("label_5")
-        self.label_2 = QtWidgets.QLabel(self.frame)
-        self.label_2.setGeometry(QtCore.QRect(340, 0, 201, 131))
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("../imagens/icon_extrato2.png"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setObjectName("label_2")
+        self.label_6.setFont(font)
+        self.label_6.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_6.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_6.setObjectName("label_6")
         self.verticalLayout.addWidget(self.frame)
-        tela_transferencia.setCentralWidget(self.centralwidget)
+        tela_saque.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(tela_transferencia)
-        QtCore.QMetaObject.connectSlotsByName(tela_transferencia)
+        self.retranslateUi(tela_saque)
+        QtCore.QMetaObject.connectSlotsByName(tela_saque)
 
-    def retranslateUi(self, tela_transferencia):
+    def retranslateUi(self, tela_saque):
         _translate = QtCore.QCoreApplication.translate
-        tela_transferencia.setWindowTitle(_translate("tela_transferencia", "MainWindow"))
-        self.lineEdit.setPlaceholderText(_translate("tela_transferencia", "Digite o valor da transferencia"))
-        self.label.setText(_translate("tela_transferencia", "Transferir"))
-        self.pushButton.setText(_translate("tela_transferencia", "Transferir"))
-        self.pushButton_2.setText(_translate("tela_transferencia", "Cancelar"))
-        self.label_3.setText(_translate("tela_transferencia", "Saldo"))
-        self.lineEdit_5.setPlaceholderText(_translate("tela_transferencia", "Numero da conta que você vai transferir"))
-        self.label_4.setText(_translate("tela_transferencia", "Valor"))
-        self.label_5.setText(_translate("tela_transferencia", "Conta Destino"))
+        tela_saque.setWindowTitle(_translate("tela_saque", "MainWindow"))
+        self.lineEdit.setPlaceholderText(_translate("tela_saque", "Digite o valor do saque"))
+        self.label.setText(_translate("tela_saque", "Sacar"))
+        self.pushButton.setText(_translate("tela_saque", "Sacar"))
+        self.pushButton_2.setText(_translate("tela_saque", "Cancelar"))
+        self.label_3.setText(_translate("tela_saque", "Saldo"))
+        self.label_4.setText(_translate("tela_saque", "Valor"))
+        self.label_6.setText(_translate("tela_saque", "My Bank"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    tela_transferencia = QtWidgets.QMainWindow()
-    ui = Ui_tela_transferencia()
-    ui.setupUi(tela_transferencia)
-    tela_transferencia.show()
+    tela_saque = QtWidgets.QMainWindow()
+    ui = Ui_tela_saque()
+    ui.setupUi(tela_saque)
+    tela_saque.show()
     sys.exit(app.exec_())

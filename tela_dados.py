@@ -28,7 +28,7 @@ class tela_dados(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.frame_2 = QtWidgets.QFrame(self.frame)
-        self.frame_2.setGeometry(QtCore.QRect(190, 80, 530, 554))
+        self.frame_2.setGeometry(QtCore.QRect(190, 120, 530, 554))
         self.frame_2.setStyleSheet("background-color:rgba(255, 253, 253, 38);")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -217,7 +217,7 @@ class tela_dados(object):
 "}")
         self.pushButton_3.setObjectName("pushButton_3")
         self.label_9 = QtWidgets.QLabel(self.frame)
-        self.label_9.setGeometry(QtCore.QRect(190, 40, 531, 41))
+        self.label_9.setGeometry(QtCore.QRect(190, 80, 531, 41))
         font = QtGui.QFont()
         font.setFamily("Sans Serif")
         font.setPointSize(14)
@@ -228,6 +228,17 @@ class tela_dados(object):
 "")
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setObjectName("label_9")
+        self.label_4 = QtWidgets.QLabel(self.frame)
+        self.label_4.setGeometry(QtCore.QRect(270, 20, 371, 41))
+        font = QtGui.QFont()
+        font.setFamily("Sawasdee")
+        font.setPointSize(24)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
         self.verticalLayout.addWidget(self.frame)
         tela_dados.setCentralWidget(self.centralwidget)
 
@@ -246,6 +257,7 @@ class tela_dados(object):
         self.pushButton_2.setText(_translate("tela_dados", "Menu"))
         self.pushButton_3.setText(_translate("tela_dados", "Remover conta"))
         self.label_9.setText(_translate("tela_dados", "Dados da Conta"))
+        self.label_4.setText(_translate("tela_dados", "My Bank"))
 
 
 if __name__ == "__main__":

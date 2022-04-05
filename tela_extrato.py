@@ -28,13 +28,13 @@ class tela_extrato(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.label_2 = QtWidgets.QLabel(self.frame)
-        self.label_2.setGeometry(QtCore.QRect(350, 20, 201, 131))
+        self.label_2.setGeometry(QtCore.QRect(360, 50, 161, 111))
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("../imagens/icon_extrato2.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("imagens/icons8-gorjeta-64.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setObjectName("label_2")
         self.frame_2 = QtWidgets.QFrame(self.frame)
-        self.frame_2.setGeometry(QtCore.QRect(210, 150, 481, 301))
+        self.frame_2.setGeometry(QtCore.QRect(210, 160, 481, 301))
         self.frame_2.setStyleSheet("background-color: rgba(1, 0, 0, 99);")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -89,6 +89,17 @@ class tela_extrato(object):
 "    border: 2px solid rgb(32, 74, 135);\n"
 "}")
         self.pushButton_2.setObjectName("pushButton_2")
+        self.label_6 = QtWidgets.QLabel(self.frame)
+        self.label_6.setGeometry(QtCore.QRect(260, 10, 371, 41))
+        font = QtGui.QFont()
+        font.setFamily("Sawasdee")
+        font.setPointSize(24)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_6.setFont(font)
+        self.label_6.setStyleSheet("color: rgb(255, 255, 255);")
+        self.label_6.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_6.setObjectName("label_6")
         self.verticalLayout.addWidget(self.frame)
         Tela_extrato.setCentralWidget(self.centralwidget)
 
@@ -101,6 +112,7 @@ class tela_extrato(object):
         self.label_3.setText(_translate("Tela_extrato", "Saldo"))
         self.label.setText(_translate("Tela_extrato", "Extrato"))
         self.pushButton_2.setText(_translate("Tela_extrato", "Menu"))
+        self.label_6.setText(_translate("Tela_extrato", "My Bank"))
 
 
 if __name__ == "__main__":

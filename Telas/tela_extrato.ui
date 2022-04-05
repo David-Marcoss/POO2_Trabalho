@@ -42,17 +42,17 @@ color: rgb(255, 255, 255);</string>
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>20</y>
-         <width>201</width>
-         <height>131</height>
+         <x>360</x>
+         <y>50</y>
+         <width>161</width>
+         <height>111</height>
         </rect>
        </property>
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>../imagens/icon_extrato2.png</pixmap>
+        <pixmap>imagens/icons8-gorjeta-64.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -62,7 +62,7 @@ color: rgb(255, 255, 255);</string>
        <property name="geometry">
         <rect>
          <x>210</x>
-         <y>150</y>
+         <y>160</y>
          <width>481</width>
          <height>301</height>
         </rect>
@@ -186,6 +186,33 @@ QPushButton:hover{
        </property>
        <property name="text">
         <string>Menu</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>10</y>
+         <width>371</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Sawasdee</family>
+         <pointsize>24</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>My Bank</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </widget>
