@@ -263,8 +263,8 @@ class tela_dados(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    tela_dados = QtWidgets.QMainWindow()
-    ui = Ui_tela_dados()
-    ui.setupUi(tela_dados)
-    tela_dados.show()
+    tela = QtWidgets.QMainWindow()
+    ui = tela_dados()
+    ui.setupUi(tela)
+    tela.show()
     sys.exit(app.exec_())
