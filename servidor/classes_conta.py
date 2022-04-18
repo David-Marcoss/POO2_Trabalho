@@ -35,8 +35,10 @@ class conta:
         :return: dado se a busca for bem sucedida
                  None se o dado nao foi e encontrado
         """
+        self.reiniciar_conexao_db()
+
         self._cursor.execute('USE Banco;')
-        self._cursor.execute(f'select {dado} from Conta where {atributo} = {parametro}')
+        self._cursor.execute(f'SELECT {dado} FROM Conta WHERE {atributo} = {parametro}')
 
         valor = self._cursor.fetchall()
 
@@ -104,7 +106,7 @@ class conta:
         if valor != []:
 
             self.id_conta = int(valor[0][0])
-            self.saldo = float(valor[0][1])
+            self._saldo = float(valor[0][1])
             self.limite = float(valor[0][2])
             self.id_cliente = valor[0][3]
             self.senha = str(valor[0][4])
@@ -147,8 +149,8 @@ class conta:
 
             if valor <= self.saldo and valor > 0:
 
-                self._saldo -= valor
-                self.atualiza_dado_conta(self.id_conta, 'saldo', self.saldo)
+                self._saldo = self.saldo - valor
+                self.atualiza_dado_conta(self.id_conta, 'saldo', self._saldo)
                 self.historico_conta.inserir_transacao_historico(self.id_conta,f'  -Saque feito no valor de: R$ {valor} ')
                 self._conexao.commit()
 
@@ -158,8 +160,8 @@ class conta:
     def depositar(self, valor):
         if (self._conta_logada == True and valor > 0):
 
-            self._saldo += valor
-            self.atualiza_dado_conta(self.id_conta, 'saldo', self.saldo)
+            self._saldo = self.saldo + valor
+            self.atualiza_dado_conta(self.id_conta, 'saldo', self._saldo)
             self.historico_conta.inserir_transacao_historico(self.id_conta,f"  -Deposito feito no valor de R$ {valor}")
             self._conexao.commit()
 
@@ -175,8 +177,9 @@ class conta:
             if conta_destino != None and valor < self.saldo:
                 saldo_destino = conta_destino[0][0]  # valor do saldo da conta de destino
 
-                self.saldo-= valor
-                self.atualiza_dado_conta(self.id_conta, 'saldo', self.saldo)
+                self._saldo = self.saldo - valor
+
+                self.atualiza_dado_conta(self.id_conta, 'saldo', self._saldo)
                 self.historico_conta.inserir_transacao_historico(self.id_conta,f'   -Transferencia no valor de: R$ {valor} enviada para conta: {id_conta_destino}')
 
                 saldo_destino += valor
@@ -222,6 +225,21 @@ class conta:
         else:
             return None
 
+    def dados_menu(self):
+
+        if self._conta_logada == True:
+
+            dados_cliente = self.retorna_dado_conta('Id_conta,saldo', 'Id_conta', self.id_conta)
+            dados_conta = []
+
+            for i in dados_cliente[0]:
+                dados_conta.append(i)
+
+            return dados_conta
+        else:
+            return None
+
+
     def remover_conta_banco(self):
         if self._conta_logada == True and self.saldo == 0:
 
@@ -237,7 +255,16 @@ class conta:
         else:
             return None
 
+    def reiniciar_conexao_db(self):
+        """
+            reinicia a conexao com o banco de dados
+            para caso aja a alteração de um dado do banco por outra instancia
+            nao tenha conflito de valores da conta
+        """
 
+        self._conexao.close()
+        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='12345678')
+        self._cursor = self._conexao.cursor()
 
     @property
     def id_conta(self):
@@ -273,11 +300,17 @@ class conta:
 
     @property
     def saldo(self):
-        return self._saldo
+        if self._conta_logada:
 
-    @saldo.setter
-    def saldo(self, saldo):
-        self._saldo = saldo
+            self.reiniciar_conexao_db()
+            self._cursor.execute('USE Banco;')
+            self._cursor.execute(f"""SELECT saldo FROM Conta WHERE Id_conta = {self.id_conta};""")
+
+            s = self._cursor.fetchall()
+
+            return s[0][0]
+        else:
+            return None
 
     @property
     def user_login(self):
@@ -299,13 +332,20 @@ class conta:
 if __name__ == "__main__":
    cont = conta()
 
-   print(cont.cliente.inserir_cliente('josef','joestar','2000/02/22','10101110101'))
-   print(cont.inserir_conta('10101010101',1000,10000,'123','jose'))
+   import time
 
-   print(cont.logar_conta('jose','123'))
+   #print(cont.cliente.inserir_cliente('josef','joestar','2000/02/22','10101110101'))
+   #print(cont.inserir_conta('10101010101',1000,10000,'123','jose'))
+
+   print(cont.logar_conta('maria123','1234'))
    print(cont.dados_conta())
-   cont.deslogar()
-   print(cont.dados_conta())
+   print(cont.depositar(300))
+   #print(cont.historico_transacoes())
+   print(cont.saldo)
+
+   time.sleep(40)
+
+   print(cont.saldo)
 
 
 

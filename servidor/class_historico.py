@@ -25,10 +25,17 @@ class historico:
         self._cursor.execute('USE Banco;')
         self._cursor.execute(f'SELECT transacao,data_transacao FROM historico WHERE Conta_Id_conta = {id_conta};')
 
+        dados = self._cursor.fetchall()
         historico = ''
 
-        for i in self._cursor:
-            historico += '\n' + i[0] + ' na data: ' + f'{i[1]}' + '\n'
+        if len(dados) < 10:
+            for i in dados:
+                historico += '\n' + i[0] + ' na data: ' + f'{i[1]}' + '\n'
+        else:
+            j= len(dados)
+            for i in range(0,10):
+                j-=1
+                historico += '\n' + dados[j][0] + ' na data: ' + f'{dados[j][1]}' + '\n'
 
         return historico
 

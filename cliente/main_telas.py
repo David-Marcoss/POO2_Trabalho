@@ -1,4 +1,3 @@
-import sys
 
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QMainWindow, QApplication
@@ -15,8 +14,11 @@ from tela_menu import tela_menu
 from tela_saque import tela_saque
 from tela_transferencia import tela_transferencia
 
-from codigos_sistema.funcoes_auxiliares import concatenar_operacao
-from codigos_sistema.cliente import conectar_servidor
+import sys
+sys.path.insert(1, '../')
+
+from funcoes_auxiliares import concatenar_operacao
+from cliente import conectar_servidor
 
 class main_telas(QtWidgets.QWidget):
 
@@ -130,18 +132,23 @@ class main(QMainWindow,main_telas):
         if (nome != '' and cpf != '' and sobrenome != '' and nascimento != '' and saldo != '' and limite != '' and senha != '' and user != ''):
 
             msg = self.conectar_servidor.enviar_mensagem( concatenar_operacao( ['cadastrar',nome,sobrenome,nascimento,cpf,saldo,limite,senha,user] ) )
-            QMessageBox.information(None, 'msg',msg[1])
+            if msg != None:
 
-            self.tela_cadastro.lineEdit.setText('')
-            self.tela_cadastro.lineEdit_2.setText('')
-            self.tela_cadastro.lineEdit_3.setText('')
-            self.tela_cadastro.lineEdit_8.setText('')
-            self.tela_cadastro.lineEdit_6.setText('')
-            self.tela_cadastro.lineEdit_7.setText('')
-            self.tela_cadastro.lineEdit_15.setText('')
+                QMessageBox.information(None, 'msg',msg[1])
 
-            if msg[0] == '0':
+                self.tela_cadastro.lineEdit.setText('')
+                self.tela_cadastro.lineEdit_2.setText('')
+                self.tela_cadastro.lineEdit_3.setText('')
+                self.tela_cadastro.lineEdit_8.setText('')
+                self.tela_cadastro.lineEdit_6.setText('')
+                self.tela_cadastro.lineEdit_7.setText('')
+                self.tela_cadastro.lineEdit_15.setText('')
+
+                if msg[0] == '0':
+                    self.voltarLogin()
+            else:
                 self.voltarLogin()
+                QMessageBox.information(None, 'msg', 'Desculpe Sistema fora do AR!!\nTente novamente mais tarde!!')
 
     def botao_logar(self):
         user = self.tela_login.lineEdit.text()
@@ -159,7 +166,7 @@ class main(QMainWindow,main_telas):
                 else:
                     QMessageBox.information(None, 'msg', msg[1])
             else:
-                QMessageBox.information(None, 'msg', 'Desculpe Sistema fora do AR!!')
+                QMessageBox.information(None, 'msg', 'Desculpe Sistema fora do AR!!\nTente novamente mais tarde!!')
 
         else:
             QMessageBox.information(None, 'msg', 'Preencha todos os campos para fazer login !!')
@@ -229,17 +236,19 @@ class main(QMainWindow,main_telas):
         self.QtStack.setCurrentIndex(1)
 
     def abrir_telaMenu(self):
-        msg = self.conectar_servidor.enviar_mensagem('ver dados')
+        msg = self.conectar_servidor.enviar_mensagem('dados menu')
+        print(msg)
 
         if msg[0] == '0':
 
-            self.tela_menu.lineEdit_5.setText(f"{msg[4]} ")
-            self.tela_menu.lineEdit_8.setText(f"R$ {msg[5]} ")
+            self.tela_menu.lineEdit_5.setText(f"{msg[1]} ")
+            self.tela_menu.lineEdit_8.setText(f"R$ {msg[2]} ")
 
         self.QtStack.setCurrentIndex(2)
 
     def abrir_telaDados(self):
         msg = self.conectar_servidor.enviar_mensagem('ver dados')
+        print(msg)
 
         if msg[0] == '0':
 
@@ -302,12 +311,11 @@ class main(QMainWindow,main_telas):
 
     def abrir_telaHistorico(self):
         msg = self.conectar_servidor.enviar_mensagem('historico')
-
+        print(msg)
         if msg[0] == '0':
             self.tela_historico.textEdit.setText(msg[1])
         else:
             QMessageBox.information(None, 'msg',msg[1])
-
 
         self.QtStack.setCurrentIndex(8)
 

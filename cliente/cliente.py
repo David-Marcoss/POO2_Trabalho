@@ -5,13 +5,13 @@ class conectar_servidor:
     def __init__(self):
 
         self.host = 'localhost'
-        self.porta = 8039
+        self.porta = 8040
         self.ta_conectado = False
         self.conexao = None
 
     def enviar_mensagem(self,msg_entrada):
 
-        print(msg_entrada)
+        #print(msg_entrada)
 
         if self.ta_conectado == False:
 
