@@ -131,7 +131,7 @@ class main(QMainWindow,main_telas):
 
         if (nome != '' and cpf != '' and sobrenome != '' and nascimento != '' and saldo != '' and limite != '' and senha != '' and user != ''):
 
-            msg = self.conectar_servidor.enviar_mensagem( concatenar_operacao( ['cadastrar',nome,sobrenome,nascimento,cpf,saldo,limite,senha,user] ) )
+            msg = self.conectar_servidor.enviar_mensagem( concatenar_operacao( ['cadastrar',nome,sobrenome,nascimento,cpf,saldo,limite,senha,user]) )
             if msg != None:
 
                 QMessageBox.information(None, 'msg',msg[1])

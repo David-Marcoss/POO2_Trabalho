@@ -16,7 +16,7 @@ class conta:
         self._hitorico_conta = historico()
         self._conta_logada = False
 
-        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='12345678')
+        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='Info@1234')
         self._cursor = self._conexao.cursor()
 
     def retorna_dado_conta(self,dado,atributo,parametro):
@@ -65,9 +65,15 @@ class conta:
                  False se nao foi possivael criar conta
         """
 
+        self.reiniciar_conexao_db()
 
         id_cliente = self.cliente.retorna_dado_cliente('Id_cliente', 'cpf',cpf)
-        id_cliente = id_cliente[0][0]
+
+        if id_cliente != None:
+            id_cliente = id_cliente[0][0]
+
+        else:
+            return False
 
         if ( self.retorna_dado_conta('Id_conta','Cliente_Id_cliente',id_cliente) == None and self.retorna_dado_conta('user_login','user_login',f"'{user}'") == None ):
 
@@ -98,6 +104,8 @@ class conta:
         :return: conta se o login foi concluido com sucesso
                  None se nao foi possivel fazer login
         """
+
+        self.reiniciar_conexao_db()
         self._cursor.execute('USE Banco;')
         self._cursor.execute(f"select * from Conta where user_login = '{user}' and senha = sha2('{password}', 256)")
 
@@ -131,7 +139,7 @@ class conta:
 
         :return: Retorna a conta com o dado atualizado
         """
-
+        self.reiniciar_conexao_db()
         self._cursor.execute('USE Banco;')
         self._cursor.execute(f'UPDATE `Banco`.`Conta` SET {dado} = {valor} WHERE (Id_conta = {id_conta});')
         self._conexao.commit()
@@ -139,12 +147,14 @@ class conta:
 
 
     def extrato(self):
+        self.reiniciar_conexao_db()
         if(self._conta_logada == True):
             return f"{self.saldo:.2f}"
 
         return None
 
     def sacar(self, valor):
+        self.reiniciar_conexao_db()
         if (self._conta_logada == True):
 
             if valor <= self.saldo and valor > 0:
@@ -158,6 +168,7 @@ class conta:
         return False
 
     def depositar(self, valor):
+        self.reiniciar_conexao_db()
         if (self._conta_logada == True and valor > 0):
 
             self._saldo = self.saldo + valor
@@ -170,11 +181,12 @@ class conta:
         return False
 
     def transferencia(self,id_conta_destino, valor):
+        self.reiniciar_conexao_db()
 
         if (self._conta_logada == True):
             conta_destino = self.retorna_dado_conta('saldo', 'Id_conta', id_conta_destino)
 
-            if conta_destino != None and valor < self.saldo:
+            if conta_destino != None and valor <= self.saldo and valor > 0 :
                 saldo_destino = conta_destino[0][0]  # valor do saldo da conta de destino
 
                 self._saldo = self.saldo - valor
@@ -204,6 +216,7 @@ class conta:
         self._conexao.close()
 
     def historico_transacoes(self):
+        self.reiniciar_conexao_db()
         if self._conta_logada == True:
             return self.historico_conta.historico_conta(self.id_conta)
         else:
@@ -241,6 +254,8 @@ class conta:
 
 
     def remover_conta_banco(self):
+        self.reiniciar_conexao_db()
+
         if self._conta_logada == True and self.saldo == 0:
 
             self._cursor.execute('USE Banco;')
@@ -249,6 +264,8 @@ class conta:
             self._cursor.execute(f'DELETE FROM Conta WHERE Id_conta =  {self.id_conta};')
             self._cursor.execute(f'DELETE FROM Cliente WHERE Id_cliente = {self.id_cliente};')
             self._conexao.commit()
+
+            self._conta_logada = False
 
             return True
 
@@ -263,7 +280,7 @@ class conta:
         """
 
         self._conexao.close()
-        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='12345678')
+        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='Info@1234')
         self._cursor = self._conexao.cursor()
 
     @property

@@ -4,7 +4,7 @@ from datetime import date
 class historico:
 
     def __init__(self):
-        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='12345678')
+        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='Info@1234')
         self._cursor = self._conexao.cursor()
 
 

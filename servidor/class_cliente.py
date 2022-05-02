@@ -10,7 +10,7 @@ class cliente:
         self._sobrenome = ''
         self._data_nascimento = ''
 
-        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='12345678')
+        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='Info@1234')
         self._cursor = self._conexao.cursor()
 
     def inserir_cliente(self,nome,sobrenome,data_nascimento,cpf):
@@ -26,6 +26,7 @@ class cliente:
         :return: True se o cliente foi inserido no banco de dados
                  False se o cliente nao foi inserido no banco de dados
         """
+        self.reiniciar_conexao_db()
         if self.retorna_dado_cliente('cpf','cpf',cpf) == None:  #verifica se o cliente já foi cadastrado ou Nao
 
             self._cursor.execute(" INSERT INTO `Banco`.`Cliente` (`nome`, `sobrenome`, `data_nascimento`, `cpf`) VALUES(%s,%s,%s,%s);",(nome,sobrenome,data_nascimento,cpf))
@@ -51,6 +52,7 @@ class cliente:
         :return: dado se a busca for bem sucedida
                  None se o dado nao foi e encontrado
         """
+        self.reiniciar_conexao_db()
         self._cursor.execute('USE Banco;')
         self._cursor.execute(f"select {dado} from Cliente where {atributo} = {parametro}")
 
@@ -62,9 +64,22 @@ class cliente:
             return valor
 
     def remover_cliente(self,cpf):
+        self.reiniciar_conexao_db()
         self._cursor.execute('USE Banco;')
         self._cursor.execute(f'DELETE FROM Cliente WHERE cpf = {cpf};')
         self._conexao.commit()
+
+    def reiniciar_conexao_db(self):
+        """
+            reinicia a conexao com o banco de dados
+            para caso aja a alteração de um dado do banco por outra instancia
+            nao tenha conflito de valores da conta
+        """
+
+        self._conexao.close()
+        self._conexao = mysql.connector.connect(host='localhost', db='Banco', user='suporte', passwd='Info@1234')
+        self._cursor = self._conexao.cursor()
+
 
     def desconectar(self):
         self._conexao.close()
